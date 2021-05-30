@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { React, useState, SyntheticEvent } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Login = ({ setLogin }: { setLogin: Function }) => {
     const [email, setEmail] = useState('');
@@ -32,6 +33,10 @@ const Login = ({ setLogin }: { setLogin: Function }) => {
 
             <input type="password" className="form-control" placeholder="Password" required
                 onChange={e => setPassword(e.target.value)} />
+
+            <div className="mb-3">
+                <Link to="/forgot">Forgot Password</Link>
+            </div>
 
             <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
