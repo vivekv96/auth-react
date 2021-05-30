@@ -7,6 +7,7 @@ import Nav from "./components/Nav";
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Forgot from './pages/Forgot';
+import Reset from './pages/Reset';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +38,7 @@ function App() {
         <Route path="/login" component={() => <Login setLogin={() => setLogin(true)} />} />
         <Route path="/register" component={Register} />
         <Route path="/forgot" component={Forgot} />
+        <Route path="/reset/:token" component={Reset} />
       </BrowserRouter>
     </div>
   );
