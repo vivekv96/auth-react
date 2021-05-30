@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -7,11 +8,12 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [redirect, setRedirect] = useState(false);
 
     const sumbit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        const response = await axios.post('http://localhost:8000/api/register', {
+        await axios.post('register', {
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -19,7 +21,11 @@ const Register = () => {
             confirmPassword: confirmPassword
         })
 
-        console.log(response);
+        setRedirect(true)
+    }
+
+    if (redirect) {
+        return <Redirect to="/login" />
     }
 
     return (
